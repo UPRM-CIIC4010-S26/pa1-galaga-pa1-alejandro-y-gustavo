@@ -32,7 +32,8 @@ class Projectile {
 
         HitBox getHitBox() { return hitBox; }
         std::pair<double, double> getPosition() { return position; }
-
+        int getID() {return ID;}
+        
         void draw();
         void update();
         static void CleanProjectiles();

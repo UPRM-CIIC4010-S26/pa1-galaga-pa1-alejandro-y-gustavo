@@ -38,6 +38,5 @@ void Projectile::ProjectileCollision() {
                 projectiles[j].del = true;
             }
         }
-        
     }
 }

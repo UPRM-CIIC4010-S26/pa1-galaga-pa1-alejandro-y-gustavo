@@ -18,15 +18,17 @@ class Program {
         int count = 0;
         int delay = 0;
         int lives = 3;
+        int totalScore = 0;
         int pauseFrames = 0;
-
         bool startup = true;
         bool paused = false;
         bool gameOver = false;
 
     public:
         Program();
+        int getTotalScore() {return totalScore;}
         
+        void addTotalScore();
         void Update();
         void Draw();
         void ManageEnemyRespawns();
@@ -36,6 +38,7 @@ class Program {
         void KeyInputs();
         void PlayerReset();
         void Reset();
+
           
         ~Program() {}
 };

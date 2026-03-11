@@ -1,6 +1,7 @@
 #include "Program.hpp"
 
 Program::Program() {
+    totalScore = 0;
     Background::sideWalls = std::pair<HitBox, HitBox>{ 
         HitBox(0, 0, 10, GetScreenHeight()), 
         HitBox(GetScreenWidth() - 10, 0, 10, GetScreenHeight())
@@ -84,11 +85,16 @@ void Program::Draw() {
     for (Projectile p : Projectile::projectiles) p.draw();
     for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) if (p.second) p.second->draw();
 
+    DrawText(TextFormat("Score: %d", totalScore), 10, 25, 30, WHITE);
+
     if (startup) DrawStartup();
     if (paused) DrawPauseScreen();
     if (gameOver) DrawGameOver();
 }
 
+void Program::addTotalScore(){
+    
+}
 void Program::ManageEnemyRespawns() {
     delay = std::max(delay - 1, 0);
 
@@ -155,6 +161,7 @@ void Program::KeyInputs() {
     if (!paused && !startup && IsKeyPressed('O')) gameOver = !gameOver;
     if (!gameOver && !paused && IsKeyPressed('I')) startup = !startup;
     if (IsKeyPressed('H')) HitBox::drawHitbox = !HitBox::drawHitbox;
+    if (IsKeyPressed('K')) totalScore = getTotalScore() + 500;
     
     if (gameOver && IsKeyPressed(KEY_ENTER)) {
         gameOver = false;
@@ -190,6 +197,7 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    totalScore = 0;
 
     Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
             std::pair<float, float>{350, 150}, 

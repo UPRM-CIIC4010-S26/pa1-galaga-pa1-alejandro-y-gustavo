@@ -18,7 +18,8 @@ class Enemy {
         int health = 1;
         std::pair<float, float> position;
         HitBox hitBox;
-
+        bool erase = false;
+        int score = 40;
         inline static float direction = 0.5;
         inline static int directionChange = 100;
         inline static std::vector<std::pair<std::pair<float, float>, Enemy*>> enemies;
@@ -57,11 +58,13 @@ class Enemy {
                         }
                     }
 
-                    if (p.second->health <= 0) {
+                    if (p.second->health <= 0) {//Aqui es donde sabe que se muere. UPdate score here.
                         Animation::animations.push_back(
                             Animation(p.second->position.first, p.second->position.second, 155, 0, 33, 33, 30, 30, 4, ImageManager::SpriteSheet)
                         );
-                        p.second = nullptr;
+                        p.second->erase = true;
+                        
+                        
                     }
                 }
             }
@@ -70,6 +73,7 @@ class Enemy {
                 if ((Enemy::enemies[i].second && Enemy::enemies[i].second->position.first <= -30) || 
                     (!Enemy::enemies[i].second && Enemy::enemies[i].first.first == 0 && Enemy::enemies[i].first.second == 0)) {
                     Enemy::enemies.erase(Enemy::enemies.begin() + i);
+                    i--;
                 }
             }
 

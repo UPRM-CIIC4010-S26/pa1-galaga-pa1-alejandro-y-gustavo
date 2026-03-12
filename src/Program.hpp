@@ -18,16 +18,17 @@ class Program {
         int count = 0;
         int delay = 0;
         int lives = 3;
-        int totalScore = 0;
+        
         int pauseFrames = 0;
         bool startup = true;
         bool paused = false;
         bool gameOver = false;
 
     public:
+     int totalScore = 0;
         Program();
-        int getTotalScore() {return totalScore;}
-        
+        int getTotalScore(){return totalScore;}
+        void updateLives();             //Function added by Alejandro
         void addTotalScore();
         void Update();
         void Draw();

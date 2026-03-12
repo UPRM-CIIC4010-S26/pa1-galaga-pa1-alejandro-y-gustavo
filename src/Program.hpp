@@ -39,7 +39,7 @@ class Program {
         void KeyInputs();
         void PlayerReset();
         void Reset();
-
+        int var = 1000;
           
         ~Program() {}
 };

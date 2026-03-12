@@ -71,11 +71,12 @@ void Program::Update() {
         Projectile::CleanProjectiles();
         Projectile::ProjectileCollision();
     }
-    if (lives>=5){
-        lives = 5;
-   
+        if(totalScore>=var){if (lives>=5){
+            lives = 5; 
+        }
+        var+=1000;
+        lives++;
     }
-
 }
 
 void Program::Draw() {

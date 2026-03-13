@@ -9,6 +9,7 @@ class DyEnemy : public Enemy {
         int score = 30;
 
     public:
+    int randval = GetRandomValue(1,2);
         DyEnemy(float x, float y) : Enemy(x, y) { 
             this->cooldown = GetRandomValue(90, 300);
             this->health = 1; 

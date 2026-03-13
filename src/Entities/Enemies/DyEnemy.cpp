@@ -2,7 +2,6 @@
 
 
 void DyEnemy::draw() {
-    int randval = 0;
         if (HitBox::drawHitbox) this->hitBox.draw();
         if (randval == 1);
             DrawTexturePro(ImageManager::SpriteSheet, Rectangle{2, 128, 13, 14}, 

@@ -62,9 +62,10 @@ class Enemy {
                         Animation::animations.push_back(
                             Animation(p.second->position.first, p.second->position.second, 155, 0, 33, 33, 30, 30, 4, ImageManager::SpriteSheet)
                         );
+                        if (p.second->health > 0){
+                            PlaySound(SoundManager::hit);
+                        }
                         p.second->erase = true;
-                        
-                        
                     }
                 }
             }
@@ -73,6 +74,7 @@ class Enemy {
                 if ((Enemy::enemies[i].second && Enemy::enemies[i].second->position.first <= -30) || 
                     (!Enemy::enemies[i].second && Enemy::enemies[i].first.first == 0 && Enemy::enemies[i].first.second == 0)) {
                     Enemy::enemies.erase(Enemy::enemies.begin() + i);
+                    PlaySound(SoundManager::dead);
                     i--;
                 }
             }
